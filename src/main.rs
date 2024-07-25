@@ -33,7 +33,7 @@ fn template(inner: Node) -> Node {
             <meta name="description" content="When you see this logo on any artwork, whether painting, poetry, or prose, you know that it was made by a human just like you."/>
 
             <meta content="width=device-width, initial-scale=1" name="viewport"/>
-            <title class="text-4xl" >"The Humanmade Mark"</title>
+            <title class="text-4xl" >"The Brainmade Mark"</title>
 
             </head>
 
@@ -41,7 +41,7 @@ fn template(inner: Node) -> Node {
 
                     <nav class="flex items-center justify-between flex-wrap bg-black-500 p-6">
                         <div class="flex items-center flex-shrink-0 text-white mr-6">
-                            <span class="font-semibold text-xl tracking-tight">The Humanmade Mark</span>
+                            <span class="font-semibold text-xl tracking-tight">The Brainmade Mark</span>
                         </div>
                         <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
                             <div class="text-xl lg:flex-grow">
@@ -51,7 +51,7 @@ fn template(inner: Node) -> Node {
                                 <a href="#downloads" class="underline block lg:inline-block lg:mt-0 text-black-200 hover:text-white mr-4">
                                     Downloads
                                 </a>
-                                <a href="https://github.com/0atman/HumanmadeMark-com" class="underline block lg:inline-block lg:mt-0 text-black-200 hover:text-white mr-4">
+                                <a href="https://github.com/0atman/Brainmade-org" class="underline block lg:inline-block lg:mt-0 text-black-200 hover:text-white mr-4">
                                     Github
                                 </a>
                             </div>
@@ -80,7 +80,7 @@ fn widget() -> Node {
 fn index() -> Node {
     let heading = html! {
         <div class="flex w-full justify-center">
-            <img class="w-1/2" alt="A logo of a human with a seed germinating in their head, with the word 'Humanmade' next to it, along with the website humanmademark.com underneath." src="white-logo.svg" />
+            <img class="w-1/2" alt="A logo of a human with a seed germinating in their head, with the word 'Brainmade' next to it, along with the website brainmade.org underneath." src="white-logo.svg" />
         </div>
         <br/>
         <br/>
@@ -91,7 +91,7 @@ fn index() -> Node {
         "Hi friends, "<a class="underline" href="#about">"I'm Tris"</a>", I'd like to introduce you to a small project I've made."
         <br/>
         <br/>
-        "The "<i>Humanmade</i>" mark is something I will be attaching to any works of mine that were mostly made by me or my friends, not by generative tools like GPT. I've built this website to freely share the high-resolution black or white versions of the logo available with you, which you can download and attach to your own projects if you'd like to make the same statement."
+        "The "<i>Brainmade</i>" mark is something I will be attaching to any works of mine that were mostly made by me or my friends, not by generative tools like GPT. I've built this website to freely share the high-resolution black or white versions of the logo available with you, which you can download and attach to your own projects if you'd like to make the same statement."
         <br/>
         "I've made the following video to try to make my reasons for making this clear, but it's simple:"
         <br/>
@@ -103,7 +103,7 @@ fn index() -> Node {
         <br/>
         <br/>
         <b>
-            <a class="underline" href="https://www.youtube.com/watch?v=qjPAWy_2FL0?">Watch my short video here, or read on.
+            <a class="underline" href="https://www.youtube.com/watch?v=EbzJpwYixIk">Watch my short video here, or read on.
                 { widget() }
             </a>
         </b>
@@ -166,98 +166,26 @@ fn index() -> Node {
                 </a>
             </li>
             <li>
-                <a href="white-logo.svg" class="underline block lg:inline-block lg:mt-0 text-black-200 hover:text-white mr-4">
+                <a href="black-logo.svg" class="underline block lg:inline-block lg:mt-0 text-black-200 hover:text-white mr-4">
                     white-logo.svg
                 </a>
             </li>
-            <li>
-                <a href="white-logo-square.png" class="underline block lg:inline-block lg:mt-0 text-black-200 hover:text-white mr-4">
-                    white-logo-square.png
-                </a>
-            </li>
-            <li>
-                <a href="white-logo-square.svg" class="underline block lg:inline-block lg:mt-0 text-black-200 hover:text-white mr-4">
-                    white-logo-square.svg
-                </a>
-            </li>
-            </ul>
+        </ul>
 
-            <h3 class="text-l"><b>Black</b></h3>
-            <ul class="list-disc">
-            <li>
-                <a href="black-logo.svg" class="underline block lg:inline-block lg:mt-0 text-black-200 hover:text-white mr-4">
-                    black-logo.svg
-                </a>
-            </li>
+        <h3 class="text-l"><b>Black</b></h3>
+        <ul class="list-disc">
             <li>
                 <a href="black-logo.png" class="underline block lg:inline-block lg:mt-0 text-black-200 hover:text-white mr-4">
                     black-logo.png
                 </a>
             </li>
             <li>
-                <a href="black-logo-square.png" class="underline block lg:inline-block lg:mt-0 text-black-200 hover:text-white mr-4">
-                    black-logo-square.png
-                </a>
-            </li>
-            <li>
-                <a href="black-logo-square.svg" class="underline block lg:inline-block lg:mt-0 text-black-200 hover:text-white mr-4">
-                    black-logo-square.svg
-                </a>
-            </li>
-            </ul>
-
-            <h3 class="text-l"><b>Automatic</b></h3>
-            <ul class="list-disc">
-            <li>
-                <a href="automatic-logo.svg" class="underline block lg:inline-block lg:mt-0 text-black-200 hover:text-white mr-4">
-                    automatic-logo.svg
-                </a>
-            </li>
-            <li>
-                <a href="automatic-logo-square.svg" class="underline block lg:inline-block lg:mt-0 text-black-200 hover:text-white mr-4">
-                    automatic-logo-square.svg
-                </a>
-            </li>
-            </ul>
-
-        <h3 class="text-l"><b>88x31 Buttons</b></h3>
-            <ul class="list-disc">
-            <li>
-                <a href="black-logo-88x31-animated.gif" class="underline block lg:inline-block lg:mt-0 text-black-200 hover:text-white mr-4">
-                    black-logo-88x31-animated.gif
-                </a>
-            </li>
-            <li>
-                <a href="black-logo-88x31-flat.gif" class="underline block lg:inline-block lg:mt-0 text-black-200 hover:text-white mr-4">
-                    black-logo-88x31-flat.gif
-                </a>
-            </li>
-            <li>
-                <a href="black-logo-88x31-shadow.gif" class="underline block lg:inline-block lg:mt-0 text-black-200 hover:text-white mr-4">
-                    black-logo-88x31-shadow.gif
-                </a>
-            </li>
-            <li>
-                <a href="grey-logo-88x31-flat.gif" class="underline block lg:inline-block lg:mt-0 text-black-200 hover:text-white mr-4">
-                    grey-logo-88x31-flat.gif
-                </a>
-            </li>
-            <li>
-                <a href="grey-logo-88x31-shadow.gif" class="underline block lg:inline-block lg:mt-0 text-black-200 hover:text-white mr-4">
-                    grey-logo-88x31-shadow.gif
-                </a>
-            </li>
-            <li>
-                <a href="white-logo-88x31-flat.gif" class="underline block lg:inline-block lg:mt-0 text-black-200 hover:text-white mr-4">
-                    white-logo-88x31-flat.gif
-                </a>
-            </li>
-            <li>
-                <a href="white-logo-88x31-shadow.gif" class="underline block lg:inline-block lg:mt-0 text-black-200 hover:text-white mr-4">
-                    white-logo-88x31-flat.gif
+                <a href="white-logo.svg" class="underline block lg:inline-block lg:mt-0 text-black-200 hover:text-white mr-4">
+                    black-logo.svg
                 </a>
             </li>
         </ul>
+
     };
 
     let credits = html! {
@@ -281,7 +209,7 @@ fn index() -> Node {
         <br/>
         <br/>
         <br/>
-        <p class="text-xs">"Humanmade is a NAMTAO production, made with <3 in 2024"</p>
+        <p class="text-xs">"Brainmade is a NAMTAO production, made with <3 in 2024"</p>
     };
 
     page(heading, intro, sect1, sect2, credits, footer)
