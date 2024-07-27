@@ -79,8 +79,13 @@ fn widget() -> Node {
 #[allow(clippy::too_many_lines)]
 fn index() -> Node {
     let heading = html! {
+
         <div class="flex w-full justify-center">
-            <img class="w-1/2" alt="A logo of a human with a seed germinating in their head, with the word 'Brainmade' next to it, along with the website brainmade.org underneath." src="white-logo.svg" />
+            <picture>
+                <source media="(prefers-color-scheme: dark)" srcset="white-logo.svg">
+                <source media="(prefers-color-scheme: light)" srcset="black-logo.svg">
+                <img alt="A logo of a human with a seed germinating in their head, with the word 'Brainmade' next to it, along with the website brainmade.org underneath." src="/docs/black-logo.svg">
+            </picture>
         </div>
         <br/>
         <br/>
