@@ -37,7 +37,7 @@ fn template(inner: Node) -> Node {
 
             </head>
 
-                <body class="bg-black text-white font-mono text-sm md:text-2xl">
+                <body class="bg-black text-white font-mono text-sm md:text-2xl mx-auto w-full max-w-5xl">
 
                     <nav class="flex items-center justify-between flex-wrap bg-black-500 p-6">
                         <div class="flex items-center flex-shrink-0 text-white mr-6">
