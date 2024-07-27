@@ -166,7 +166,7 @@ fn index() -> Node {
                 </a>
             </li>
             <li>
-                <a href="black-logo.svg" class="underline block lg:inline-block lg:mt-0 text-black-200 hover:text-white mr-4">
+                <a href="white-logo.svg" class="underline block lg:inline-block lg:mt-0 text-black-200 hover:text-white mr-4">
                     white-logo.svg
                 </a>
             </li>
@@ -180,7 +180,7 @@ fn index() -> Node {
                 </a>
             </li>
             <li>
-                <a href="white-logo.svg" class="underline block lg:inline-block lg:mt-0 text-black-200 hover:text-white mr-4">
+                <a href="black-logo.svg" class="underline block lg:inline-block lg:mt-0 text-black-200 hover:text-white mr-4">
                     black-logo.svg
                 </a>
             </li>
