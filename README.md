@@ -11,4 +11,9 @@ I've made the following video to try to make my reasons for making this clear, b
 
 ## I don't hate AIs, I love humans!
 
-Check out my intro video here: https://youtu.be/kul0z3OTmVM
+
+[Check out my intro video here:](https://youtu.be/kul0z3OTmVM)
+
+[![](https://brainmade.org/video.png)
+](https://youtu.be/kul0z3OTmVM)
+
