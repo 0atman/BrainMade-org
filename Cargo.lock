@@ -33,6 +33,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "brainmade-org"
+version = "0.2.0"
+dependencies = [
+ "color-eyre",
+ "html-node",
+ "rstml",
+]
+
+[[package]]
 name = "cc"
 version = "1.0.83"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -131,15 +140,6 @@ dependencies = [
  "rstml",
  "syn",
  "syn_derive",
-]
-
-[[package]]
-name = "humanamademark-com"
-version = "0.1.0"
-dependencies = [
- "color-eyre",
- "html-node",
- "rstml",
 ]
 
 [[package]]

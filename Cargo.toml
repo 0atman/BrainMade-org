@@ -1,6 +1,6 @@
 [package]
-name = "humanamademark-com"
-version = "0.1.0"
+name = "brainmade-org"
+version = "0.2.0"
 edition = "2021"
 
 [dependencies]
