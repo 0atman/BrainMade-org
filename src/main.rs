@@ -88,12 +88,9 @@ fn index() -> Node {
     };
 
     let intro = html! {
-        "Hi friends, "<a class="underline" href="#about">"I'm Tris"</a>", I'd like to introduce you to a small project I've made."
+        "The "<i>Brainmade</i>" mark is something you can attach to any works that are mostly made by you or your friends, not by generative tools like GPT. I've built this website to freely share the high-resolution black or white versions of the logo with you, which you can download and attach to your own projects if you'd like to make this statement."
         <br/>
-        <br/>
-        "The "<i>Brainmade</i>" mark is something I will be attaching to any works of mine that were mostly made by me or my friends, not by generative tools like GPT. I've built this website to freely share the high-resolution black or white versions of the logo available with you, which you can download and attach to your own projects if you'd like to make the same statement."
-        <br/>
-        "I've made the following video to try to make my reasons for making this clear, but it's simple:"
+        "I hope the following video will explain in detail for making this clear, but the tl;dr is:"
         <br/>
         <br/>
         <ul class="list-decimal">
@@ -125,7 +122,7 @@ fn index() -> Node {
         "I want a positive mark."
         <br/>
         <br/>
-        "I have multiple issues with the options I've seen so far, from having multiple logos (which is confusing) to the fixation on AI being inherently evil (this will not always be the case)."
+        "I have many issues with the options I've seen so far, from having multiple logos (which is confusing) to the fixation on AI being inherently evil (this will not always be the case)."
         <br/>
         "My root concern with these methods is that they are negative. `AI = bad`.
         But I think the correct way to present this is `human = good`."
@@ -219,22 +216,16 @@ fn page(heading: Node, intro: Node, sect1: Node, sect2: Node, credits: Node, foo
     template(html! {
         { heading }
         <br/>
-        <br/>
-        <br/>
         { intro }
-        <br/>
         <br/>
         <br/>
         { sect1 }
         <br/>
         <br/>
-        <br/>
         { sect2 }
         <br/>
         <br/>
-        <br/>
         { credits }
-        <br/>
         <br/>
         <br/>
         { footer }
