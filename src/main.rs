@@ -12,7 +12,7 @@ fn main() -> Result<(), Report> {
 }
 
 fn index() -> impl Renderable {
-    page(heading(), intro(), sect1(), sect2())
+    page(heading(), intro(), sect1(), sect2(), about())
 }
 
 fn credits_page() -> impl Renderable {
@@ -207,8 +207,8 @@ fn sect1() -> impl Fn(&mut String) {
 
 fn sect2() -> impl Fn(&mut String) {
     let sect2 = rsx! {
-        <h2 id="downloads" class="text-2xl"><b>Downloads</b></h2>
-
+        <h2 id="downloads" class="text-4xl"><b>Downloads</b></h2>
+        <br/>
         <h3 class="text-l"><b>White</b></h3>
         <ul class="list-disc">
             <li>
@@ -241,6 +241,33 @@ fn sect2() -> impl Fn(&mut String) {
     sect2
 }
 
+fn about() -> impl Fn(&mut String) {
+    rsx! {
+
+        <h2 id="about" class="text-4xl"><b>About Me</b></h2>
+        <br/>
+        "I'm Tris, I'm a writer and producer of "<a class="underline" href="http://noboilerplate.org">"fast, technical videos"</a>", and "<a class="underline" href="https://namtao.com">"audiofiction and music."</a>
+        <br/>
+        "My first career was as a web developer, doing production on the side for 15 years, but in 2022 I accidentally become entirely self-employed thanks to the surprising success of my YouTube channel, No Boilerplate."
+        <br/>
+        <br/>
+        "At heart I'm still a software developer, I'll re-use 100 libraries to avoid writing 10 lines of code - standing on the shoulders of giants is the only way I know how I get around."
+        <br/>
+        "But I've looked for a way to mark my videos and stories as being made by humans, not AI, and I can't find one that works in exactly the way I want."
+        <br/>
+        "I don't want something that says 'NO AI USED', signposts that are negative and judgemental, nor a '100% human made' guarantee - what would that even MEAN these days?"
+        <br/>
+        "I want a positive mark."
+        <br/>
+        <br/>
+        "I have many issues with the options I've seen so far, from having multiple logos (which is confusing) to the fixation on AI being inherently evil (this will not always be the case)."
+        <br/>
+        "My root concern with these methods is that they are negative. `AI = bad`.
+        But I think the correct way to present this is `human = good`."
+        <br/>
+    }
+}
+
 fn footer() -> impl Renderable {
     let footer = rsx! {
         <br/>
@@ -257,6 +284,7 @@ fn page(
     intro: impl Renderable,
     sect1: impl Renderable,
     sect2: impl Renderable,
+    sect3: impl Renderable,
 ) -> impl Renderable {
     template(rsx! {
         { heading }
@@ -267,6 +295,9 @@ fn page(
         <br/>
         <br/>
         { sect2 }
+        <br/>
+        <br/>
+        { sect3 }
     })
 }
 
