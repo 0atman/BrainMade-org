@@ -1,5 +1,3 @@
-## Hi friends, I'd like to introduce you to a small project I've made:
-
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="/docs/white-logo.svg">
   <source media="(prefers-color-scheme: light)" srcset="/docs/black-logo.svg">

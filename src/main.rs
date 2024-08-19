@@ -1,13 +1,72 @@
 use color_eyre::Report;
-#[allow(clippy::wildcard_imports)]
-use html_node::{
-    typed::{elements::*, html},
-    Node,
-};
+use hypertext::{html_elements, maud, rsx, GlobalAttributes, Renderable, Rendered};
+use pulldown_cmark::{html::push_html, Parser};
 
-fn template(inner: Node) -> Node {
-    html! {
+fn main() -> Result<(), Report> {
+    build(vec![
+        ("docs/index.html", index().render()),
+        ("docs/credits.html", credits_page().render()),
+    ])?;
+    println!("Built site OK!");
+    Ok(())
+}
 
+fn index() -> impl Renderable {
+    page(heading(), intro(), sect1(), sect2())
+}
+
+fn credits_page() -> impl Renderable {
+    let _ = rsx! {
+        <h2 class="text-2xl" > <b>Credits</b> </h2>
+        <ul class="list-disc">
+            <li>
+                "Logo based on \"Human\" by JunGSa from "
+                <a class="underline" href="https://thenounproject.com/browse/icons/term/human/" target="_blank" title="Human Icons">Noun Project</a>
+            </li>
+            <li>
+                "And \"seed\" by Adrian Syauqi from "
+            <a class="underline" href="https://thenounproject.com/browse/icons/term/seed/" target="_blank" title="seed Icons">Noun Project</a>
+            </li>
+        </ul>
+        <br/>
+        "Special thanks to everyone who workshopped the logo with me, especially super patron supporter Andrew Jackson. Andrew, I should be paying YOU!"
+    };
+
+    template(maud! {
+        (heading())
+        h2.text-3xl { "Credits" }
+        ul {
+            li { "Logo based on \"Human\" by JunGSa from "
+                 a.underline href="https://thenounproject.com/browse/icons/term/human/" {
+                    "Noun Project"
+                }
+            }
+            li {
+                "And \"seed\" by Adrian Syauqi from "
+                a.underline href="https://thenounproject.com/browse/icons/term/seed/" {
+                    "Noun Project"
+                }
+            }
+        }
+        br;
+        "Special thanks to everyone who workshopped the logo with me, especially super patron supporter Andrew Jackson. Andrew, I should be paying YOU!"
+    })
+}
+
+#[allow(dead_code)]
+struct Markdown<'a>(&'a str);
+
+impl Renderable for Markdown<'_> {
+    fn render_to(self, output: &mut String) {
+        let mut output_html = String::new();
+        let parser = Parser::new(self.0);
+        push_html(&mut output_html, parser);
+        output.push_str(output_html.as_str());
+    }
+}
+
+fn template(inner: impl Renderable) -> impl Renderable {
+    rsx! {
         <!DOCTYPE html>
         <html lang="en">
             <head>
@@ -17,7 +76,7 @@ fn template(inner: Node) -> Node {
                 <script src="tw.js"></script>
 
             <script>
-                tailwind.config = {
+                r#" tailwind.config = {
                     theme: {
                         container: {
                             center: true,
@@ -26,7 +85,7 @@ fn template(inner: Node) -> Node {
                             "mono": "courier, monospace",
                         }
                     }
-                }
+                }"#
             </script>
 
             <meta charset="utf-8"/>
@@ -48,21 +107,25 @@ fn template(inner: Node) -> Node {
                                 <a href="index.html#about" class="underline block lg:inline-block lg:mt-0 text-black-200 hover:text-white mr-4">
                                     About
                                 </a>
-                                <a href="#downloads" class="underline block lg:inline-block lg:mt-0 text-black-200 hover:text-white mr-4">
+                                <a href="index.html#downloads" class="underline block lg:inline-block lg:mt-0 text-black-200 hover:text-white mr-4">
                                     Downloads
                                 </a>
                                 <a href="https://github.com/0atman/Brainmade-org" class="underline block lg:inline-block lg:mt-0 text-black-200 hover:text-white mr-4">
                                     Github
+                                </a>
+                                <a href="credits.html" class="underline block lg:inline-block lg:mt-0 text-black-200 hover:text-white mr-4">
+                                    Credits
                                 </a>
                             </div>
                         </div>
                     </nav>
 
                     <div class="border-black border-8 container mx-auto">
-
                             {inner}
 
                     </div>
+
+            { footer() }
 
             </body>
         </html>
@@ -70,25 +133,29 @@ fn template(inner: Node) -> Node {
 }
 
 /// NOTE: the widget requires https to load
-fn widget() -> Node {
-    html_node::html! {
+fn widget() -> impl Renderable {
+    rsx! {
         <img class="w-1/2" src="video.png" />
     }
 }
 
-#[allow(clippy::too_many_lines)]
-fn index() -> Node {
-    let heading = html! {
+fn heading() -> impl Fn(&mut String) {
+    let heading = rsx! {
         <div class="flex w-full justify-center">
             <img class="w-1/2" alt="A logo of a human with a seed germinating in their head, with the word 'Brainmade' next to it, along with the website brainmade.org underneath." src="white-logo.svg" />
         </div>
         <br/>
         <br/>
         <h2 class="slogan"><b class="text-2xl" > "When you see this logo on any artwork, whether painting, poetry, or prose, you know that it was made by a human just like you." </b></h2>
+        <br/>
+        <br/>
     };
+    heading
+}
 
-    let intro = html! {
-        "The "<i>Brainmade</i>" mark is something you can attach to any works that are mostly made by you or your friends, not by generative tools like GPT. I've built this website to freely share the high-resolution black or white versions of the logo with you, which you can download and attach to your own projects if you'd like to make this statement."
+fn intro() -> impl Fn(&mut String) {
+    let intro = rsx! {
+        "The "<i>Brainmade</i>" mark is something you can attach to any works that are mostly made by you or your friends, not by generative tools like GPT. I've built this website to freely share the " <a class="underline" href="#downloads">"high-resolution black or white versions"</a> " of the logo with you, which you can download and attach to your own projects if you'd like to make this statement."
         <br/>
         "I hope the following video will explain in detail for making this clear, but the tl;dr is:"
         <br/>
@@ -105,8 +172,11 @@ fn index() -> Node {
             </a>
         </b>
     };
+    intro
+}
 
-    let sect1 = html! {
+fn sect1() -> impl Fn(&mut String) {
+    let sect1 = rsx! {
         <h1 class="text-4xl" id="about"><b>About</b></h1>
         "I'm Tris, I'm a writer and producer of "<a class="underline" href="http://noboilerplate.org">"fast, technical videos"</a>", and "<a class="underline" href="https://namtao.com">"audiofiction and music."</a>
         <br/>
@@ -151,8 +221,11 @@ fn index() -> Node {
         <br/>
         "I "<i>like</i>" that you tried hard, that's part of the experience."
     };
+    sect1
+}
 
-    let sect2 = html! {
+fn sect2() -> impl Fn(&mut String) {
+    let sect2 = rsx! {
         <h2 id="downloads" class="text-2xl"><b>Downloads</b></h2>
 
         <h3 class="text-l"><b>White</b></h3>
@@ -184,38 +257,28 @@ fn index() -> Node {
         </ul>
 
     };
+    sect2
+}
 
-    let credits = html! {
-        <h2 class="text-2xl" > <b>Credits</b> </h2>
-        <ul class="list-disc">
-            <li>
-                "Logo based on \"Human\" by JunGSa from "
-                <a class="underline" href="https://thenounproject.com/browse/icons/term/human/" target="_blank" title="Human Icons">Noun Project</a>
-            </li>
-            <li>
-                "And \"seed\" by Adrian Syauqi from "
-            <a class="underline" href="https://thenounproject.com/browse/icons/term/seed/" target="_blank" title="seed Icons">Noun Project</a>
-            </li>
-        </ul>
-        <br/>
-        "Special thanks to everyone who workshopped the logo with me, especially super patron supporter Andrew Jackson. Andrew, I should be paying YOU!"
-    };
-
-    let footer = html! {
+fn footer() -> impl Renderable {
+    let footer = rsx! {
         <br/>
         <br/>
         <br/>
         <br/>
         <p class="text-xs">"Brainmade is a NAMTAO production, made with <3 in 2024"</p>
     };
-
-    page(heading, intro, sect1, sect2, credits, footer)
+    footer
 }
 
-fn page(heading: Node, intro: Node, sect1: Node, sect2: Node, credits: Node, footer: Node) -> Node {
-    template(html! {
+fn page(
+    heading: impl Renderable,
+    intro: impl Renderable,
+    sect1: impl Renderable,
+    sect2: impl Renderable,
+) -> impl Renderable {
+    template(rsx! {
         { heading }
-        <br/>
         { intro }
         <br/>
         <br/>
@@ -223,27 +286,14 @@ fn page(heading: Node, intro: Node, sect1: Node, sect2: Node, credits: Node, foo
         <br/>
         <br/>
         { sect2 }
-        <br/>
-        <br/>
-        { credits }
-        <br/>
-        <br/>
-        { footer }
     })
 }
 
-type Router<'a> = Vec<(&'a str, fn() -> Node)>;
-
-fn build(pages: Router) -> Result<(), Report> {
-    for (page, fun) in pages {
-        std::fs::write(page, fun().to_string())?;
-    }
-    Ok(())
-}
-
-fn main() -> Result<(), Report> {
+fn build(pages: Vec<(&str, Rendered<String>)>) -> Result<(), Report> {
     std::fs::create_dir_all("docs")?;
-    let _ = build(vec![("docs/index.html", index)]);
-    println!("Built site OK!");
+    for (page, fun) in pages {
+        let output = fun.into_inner();
+        std::fs::write(page, output)?;
+    }
     Ok(())
 }
