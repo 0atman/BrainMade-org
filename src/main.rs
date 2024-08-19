@@ -178,25 +178,6 @@ fn intro() -> impl Fn(&mut String) {
 fn sect1() -> impl Fn(&mut String) {
     let sect1 = rsx! {
         <h1 class="text-4xl" id="about"><b>About</b></h1>
-        "I'm Tris, I'm a writer and producer of "<a class="underline" href="http://noboilerplate.org">"fast, technical videos"</a>", and "<a class="underline" href="https://namtao.com">"audiofiction and music."</a>
-        <br/>
-        "My first career was as a web developer, doing production on the side for 15 years, but in 2022 I accidentally become entirely self-employed thanks to the surprising success of my YouTube channel, No Boilerplate."
-        <br/>
-        <br/>
-        "At heart I'm still a software developer, I'll re-use 100 libraries to avoid writing 10 lines of code - standing on the shoulders of giants is the only way I know how I get around."
-        <br/>
-        "But I've looked for a way to mark my videos and stories as being made by humans, not AI, and I can't find one that works in exactly the way I want."
-        <br/>
-        "I don't want something that says 'NO AI USED', signposts that are negative and judgemental, nor a '100% human made' guarantee - what would that even MEAN these days?"
-        <br/>
-        "I want a positive mark."
-        <br/>
-        <br/>
-        "I have many issues with the options I've seen so far, from having multiple logos (which is confusing) to the fixation on AI being inherently evil (this will not always be the case)."
-        <br/>
-        "My root concern with these methods is that they are negative. `AI = bad`.
-        But I think the correct way to present this is `human = good`."
-        <br/>
         <br/>
         "I don't need 100% human made, I perhaps need 90% human made. Three example may make my thinking clearer:"
         <ul class="list-decimal">
