@@ -71,7 +71,14 @@ fn template(inner: impl Renderable) -> impl Renderable {
         <html lang="en">
             <head>
                 <meta http-equiv="x-clacks-overhead" content="GNU Terry Pratchett" />
-                <link rel="icon" href="favicon.png"/>
+                <link
+                    href="black-favicon.png"
+                    rel="icon"
+                    media="(prefers-color-scheme: light)">
+                <link
+                    href="white-favicon.png"
+                    rel="icon"
+                    media="(prefers-color-scheme: dark)">
                 <script src="https://cdn.tailwindcss.com"></script>
                 <script src="tw.js"></script>
 
