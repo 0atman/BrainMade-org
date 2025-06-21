@@ -243,6 +243,15 @@ fn sect2() -> impl Fn(&mut String) {
                 </a>
             </li>
         </ul>
+
+        <h3 class="text-l"><b>Black</b></h3>
+        <ul class="list-disc">
+            <li>
+                <a href="dynamic-logo.svg" class="underline block lg:inline-block lg:mt-0 text-black-200 hover:text-white mr-4">
+                    dynamic-logo.svg
+                </a>
+            </li>
+        </ul>
         
         <h3 class="text-l"><b>88x31 Buttons</b></h3>
         <ul class="list-disc">
